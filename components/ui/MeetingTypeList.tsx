@@ -13,6 +13,11 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "./input";
 
+const initialValues = {
+  dateTime: new Date(),
+  description: "",
+  link: "",
+};
 const MeetingTypeList = () => {
   const router = useRouter();
   const [meetingState, SetMeetingState] = useState<
@@ -20,11 +25,7 @@ const MeetingTypeList = () => {
   >();
   const user = useUser();
   const client = useStreamVideoClient();
-  const [values, setValues] = useState({
-    dateTime: new Date(),
-    description: "",
-    link: "",
-  });
+  const [values, setValues] = useState(initialValues);
   const [callDetails, setCallDetails] = useState<Call>();
   const { toast } = useToast();
 
@@ -82,7 +83,7 @@ const MeetingTypeList = () => {
         img="/icons/recordings.svg"
         title="View Recordings"
         description="Check out your recordings"
-        handleClick={() => router.push("/recodings")}
+        handleClick={() => router.push("/recordings")}
         className="bg-purple-1"
       />
       <HomeCard
